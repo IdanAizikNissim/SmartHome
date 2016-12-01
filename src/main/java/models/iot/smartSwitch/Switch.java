@@ -21,7 +21,6 @@ public class Switch extends IOT {
         this.status.setStatus(0);
     }
 
-
     public Switch() {
         this.status = new SwitchStatus();
     }

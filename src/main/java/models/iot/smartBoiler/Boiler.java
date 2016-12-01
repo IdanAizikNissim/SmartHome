@@ -12,11 +12,11 @@ public class Boiler extends IOT {
 
     public void startTimer(int time) {
         this.status.setStatus(time);
-        new Timer().schedule(new BoilerTimerTask(this), 0, time * 1000);
+        new Timer(true).scheduleAtFixedRate(new BoilerTimerTask(this), 0, time * 1000);
     }
 
-    public void decreesTime() {
-        this.status.setStatus(this.status.getStatus());
+    protected void decreesTime() {
+        this.status.setStatus(((BoilerStatus)this.status.getStatus()).timer--);
     }
 
     public Boiler() {

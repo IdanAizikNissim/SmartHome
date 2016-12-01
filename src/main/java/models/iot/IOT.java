@@ -13,6 +13,14 @@ public abstract class IOT extends Controller {
         return isValid;
     }
 
+    public void setValid() {
+        this.isValid = true;
+    }
+
+    public void setInvalid() {
+        this.isValid = false;
+    }
+
     public IOTStatus getStatus() {
         return status;
     }
