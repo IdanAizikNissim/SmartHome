@@ -15,4 +15,9 @@ public abstract class Controller implements IController {
     public Controller() {
         id = UUID.randomUUID();
     }
+
+    @Override
+    public String toString() {
+        return id.toString();
+    }
 }

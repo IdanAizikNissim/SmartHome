@@ -7,6 +7,7 @@ import java.util.UUID;
 public class CompositeController implements IController {
     private List<IController> childControllers;
     private static final int LIMIT = 4;
+    private IController parent;
 
     public CompositeController() {
         childControllers = new ArrayList<IController>();
@@ -17,6 +18,11 @@ public class CompositeController implements IController {
             return false;
         } else {
             childControllers.add(controller);
+
+            if (controller instanceof CompositeController) {
+                ((CompositeController)controller).parent = this;
+            }
+
             return true;
         }
     }
@@ -27,5 +33,51 @@ public class CompositeController implements IController {
 
     public UUID getId() {
         return this.getId();
+    }
+
+    public IController find(UUID id) {
+        if (getId() == id) {
+            return this;
+        }
+        // Is a controller
+        else if (childControllers.size() > 0) {
+            for (IController controller:childControllers) {
+                if (controller instanceof CompositeController) {
+                    return ((CompositeController)controller).find(id);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+
+        for (IController child:childControllers) {
+            string.append(getGap() + child.toString() + "\n");
+        }
+
+        return string.toString();
+    }
+
+    private String getGap() {
+        int lvl = getLevel(parent);
+        StringBuilder gap = new StringBuilder();
+
+        for (int l = 0; l < lvl + 1; ++l) {
+            gap.append("  ");
+        }
+
+        return gap.toString();
+    }
+
+    private int getLevel(IController p) {
+        if (p == null) {
+            return 0;
+        }
+
+        return getLevel(((CompositeController)p).parent) + 1;
     }
 }
