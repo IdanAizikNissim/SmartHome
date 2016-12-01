@@ -5,7 +5,7 @@ import models.iot.IOT;
 /**
  * Created by hackeru on 01/12/2016.
  */
-public class Camera extends IOT{
+public class Camera extends IOT {
 
     public void Rotate(int degrees) {
         this.status.setStatus(degrees);

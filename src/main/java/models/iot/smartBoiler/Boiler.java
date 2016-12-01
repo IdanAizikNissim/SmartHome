@@ -10,10 +10,6 @@ import java.util.UUID;
  */
 public class Boiler extends IOT {
 
-    public UUID getId() {
-        return null;
-    }
-
     public void startTimer(int time) {
         this.status.setStatus(time);
         new Timer().schedule(new BoilerTimerTask(getId()), 0, time * 1000);
