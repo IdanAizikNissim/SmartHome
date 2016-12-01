@@ -1,7 +1,7 @@
 package models;
 
 import models.controller.CompositeController;
-import models.controller.Controller;
+import models.controller.IController;
 
 /**
  * Created by hackeru on 01/12/2016.
@@ -22,7 +22,7 @@ public class Home {
         HAL = new CompositeController();
     }
 
-    public void addControllerToRoom(Room room, Controller controller) {
+    public void addControllerToRoom(Room room, IController controller) {
 
     }
 }

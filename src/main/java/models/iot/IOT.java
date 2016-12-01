@@ -1,7 +1,7 @@
 package models.iot;
 
-import models.controller.Controller;
+import models.controller.IController;
 
-/** Controller  leaf" */
-public abstract class IOT implements Controller {
+/** IController  leaf" */
+public abstract class IOT implements IController {
 }
