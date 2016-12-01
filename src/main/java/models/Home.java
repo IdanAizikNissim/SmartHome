@@ -61,14 +61,25 @@ public class Home implements Observer {
 
     @Override
     public String toString() {
-        StringBuilder string = new StringBuilder("Home: ");
-        string.append(address).append("\n========================");
-        string.append(HAL);
+        return "Home: " + address + "\n========================";
+    }
 
-        return string.toString();
+    public void printRooms() {
+        StringBuilder string = new StringBuilder();
+
+        for (Room room:rooms) {
+            string.append(room + "\n");
+        }
+
+        System.out.println(string);
     }
 
     public void update(Observable o, Object arg) {
 
+    }
+
+    public void printControllers() {
+        System.out.println(this);
+        System.out.println(HAL);
     }
 }

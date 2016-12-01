@@ -31,4 +31,9 @@ public class Room {
     public void addController(IController controller) {
         mainController.add(controller);
     }
+
+    @Override
+    public String toString() {
+        return id + " - " + name;
+    }
 }

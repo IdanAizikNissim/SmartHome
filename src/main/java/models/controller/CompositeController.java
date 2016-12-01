@@ -31,20 +31,12 @@ public class CompositeController implements IController {
         childControllers.remove(controller);
     }
 
-    public UUID getId() {
-        return this.getId();
-    }
-
     public IController find(UUID id) {
-        if (getId() == id) {
-            return this;
-        }
-        // Is a controller
-        else if (childControllers.size() > 0) {
-            for (IController controller:childControllers) {
-                if (controller instanceof CompositeController) {
-                    return ((CompositeController)controller).find(id);
-                }
+        for (IController controller:childControllers) {
+            if (controller instanceof CompositeController) {
+                return ((CompositeController)controller).find(id);
+            } else if (((Controller)controller).getId() == id) {
+                return controller;
             }
         }
 
