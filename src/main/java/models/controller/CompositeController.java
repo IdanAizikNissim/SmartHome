@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CompositeController implements Controller {
-    private List<Controller> childControllers;
+public class CompositeController implements IController {
+    private List<IController> childControllers;
     private static final int LIMIT = 4;
 
     public CompositeController() {
-        childControllers = new ArrayList<Controller>();
+        childControllers = new ArrayList<IController>();
     }
 
-    public boolean add(Controller controller) {
+    public boolean add(IController controller) {
         if (childControllers.size() > LIMIT) {
             return false;
         } else {
@@ -21,7 +21,7 @@ public class CompositeController implements Controller {
         }
     }
 
-    public void remove(Controller controller) {
+    public void remove(IController controller) {
         childControllers.remove(controller);
     }
 
