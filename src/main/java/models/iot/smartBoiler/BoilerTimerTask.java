@@ -8,13 +8,14 @@ import java.util.UUID;
  */
 public class BoilerTimerTask extends TimerTask {
 
-    private UUID boilerId;
+    private Boiler boiler;
 
-    public BoilerTimerTask(UUID id){
-        boilerId = id;
+    public BoilerTimerTask(Boiler boiler){
+        this.boiler = boiler;
     }
 
     @Override
     public void run() {
+        boiler.decreesTime();
     }
 }
